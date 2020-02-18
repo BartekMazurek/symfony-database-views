@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="row">
+    <div class="col-12 text-center" style="margin-top: 30px; margin-bottom: 30px;">
+        <h3>Post report from database view</h3>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">postId</th>
+                        <th scope="col">authorName</th>
+                        <th scope="col">postName</th>
+                        <th scope="col">postContent</th>
+                        <th scope="col">postCommentCount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for result in pagination %}
+                    <tr>
+                        <th>{{ result.postId }}</th>
+                        <td>{{ result.authorName }}</td>
+                        <td>{{ result.postTitle }}</td>
+                        <td>{{ result.postContent }}</td>
+                        <td>{{ result.postCommentCount }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-left">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}
